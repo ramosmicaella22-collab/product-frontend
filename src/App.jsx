@@ -117,6 +117,9 @@ export default function App() {
     return (
       <div className="card">
         <h1>{mode === "login" ? "Login" : "Register"}</h1>
+        <p className="subtitle">
+  {mode === "login" ? "Sign in to manage your products" : "Create an account to get started"}
+</p>
         {error && <p className="error">{error}</p>}
         {msg && <p className="ok">{msg}</p>}
         <form onSubmit={submitAuth}>
@@ -229,7 +232,7 @@ export default function App() {
               <td>{p.id}</td>
               <td>{p.product_name}</td>
               <td>{p.description}</td>
-              <td>{p.price}</td>
+              <td>₱{Number(p.price).toLocaleString("en-PH", { minimumFractionDigits: 2 })}</td>
               <td>{p.quantity}</td>
               <td>
                 <button onClick={() => startEdit(p)}>Edit</button>{" "}
